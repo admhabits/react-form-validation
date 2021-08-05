@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "crud-firebase-20d51"
+  },
+  "targets": {
+    "crud-firebase-20d51": {
+      "hosting": {
+        "build": [
+          "setbajah",
+          "tehbajakah"
+        ]
+      }
+    }
+  }
+}
