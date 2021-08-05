@@ -9,7 +9,7 @@ const content = {
 		{
 			placeholder: "E-mail",
 			name: "email",
-			type: "text"
+			type: "email"
 		},
 
 		{

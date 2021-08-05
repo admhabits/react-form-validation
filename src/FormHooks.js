@@ -43,7 +43,7 @@ export default function FormHooks() {
 									className="form-control full-width m-sm" 
 									name={input.name}
 									{...register(input.name)}
-									value={errors[input.name]?.message}
+									
 								/>
 							
 						))
@@ -55,7 +55,7 @@ export default function FormHooks() {
 						className="form-control full-width m-sm"
 						name="address" id="address" cols="30" rows="6"
 						{...register("address")}
-						value={errors.address?.message} 
+						
 						></textarea>
 
 				</div>
