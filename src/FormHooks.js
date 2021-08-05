@@ -8,17 +8,22 @@ import { yupResolver } from '@hookform/resolvers/yup';
 const schema = yup.object().shape({
 	name: yup.string().min(6).required(),
 	email: yup.string().email().required(),
-	nohp: yup.string().min(11).max(12).required()
+	nohp: yup.string().min(11).max(12).required(),
 	address: yup.string().max(150).required()
 })
 
 export default function FormHooks() {
-	const { register, formState: { errors }, handleSubmit } = useForm({
+	const { register, formState: { errors, isSubmitSuccessful }, handleSubmit, reset } = useForm({
 		resolver: yupResolver(schema)
 	}) 
 
 	const [ data, setData ] = useState({});
 	console.log(data)
+	useEffect(() => {
+		if (isSubmitSuccessful) {
+		      reset({});
+		    }
+	}, [isSubmitSuccessful])
 	return (
 		<div className="container">
 			<form autoComplete="off" onSubmit={handleSubmit((d) => setData(d))}>
@@ -45,7 +50,7 @@ export default function FormHooks() {
 					<textarea 
 						className="form-control full-width m-sm"
 						name="address" id="address" cols="30" rows="6"
-						ref={register} 
+						{...register("address")} 
 						></textarea>
 					<span>{errors.address?.message}</span>
 
