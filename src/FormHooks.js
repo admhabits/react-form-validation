@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import content from './static.js';
+import {db } from './Firebase';
 
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -21,9 +22,11 @@ export default function FormHooks() {
 	console.log(data)
 	useEffect(() => {
 		if (isSubmitSuccessful) {
+			  db.set(data)
 		      reset({});
+		      
 		    }
-	}, [isSubmitSuccessful])
+	}, [isSubmitSuccessful, data])
 	return (
 		<div className="container">
 			<form autoComplete="off" onSubmit={handleSubmit((d) => setData(d))}>
