@@ -35,16 +35,17 @@ export default function FormHooks() {
 					{
 						content.inputs.map((input, key)=>(
 							
-							<div key={key}>
+							
 								<input
+									key={key}
 									type={input.type}
 									placeholder={input.placeholder} 
 									className="form-control full-width m-sm" 
 									name={input.name}
 									{...register(input.name)}
+									value={errors[input.name]?.message}
 								/>
-								<span>{errors[input.name]?.message}</span>
-							</div>
+							
 						))
 					}
 					
@@ -53,9 +54,9 @@ export default function FormHooks() {
 					<textarea 
 						className="form-control full-width m-sm"
 						name="address" id="address" cols="30" rows="6"
-						{...register("address")} 
+						{...register("address")}
+						value={errors.address?.message} 
 						></textarea>
-					<span>{errors.address?.message}</span>
 
 				</div>
 				<div className="display-flex justify-end">
